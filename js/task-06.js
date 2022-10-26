@@ -7,14 +7,18 @@
 // Для добавления стилей, используй CSS - классы valid и invalid,
 // которые мы уже добавили в исходные файлы задания.
 
-const textInput = document.querySelector('#validation-input')
 
-textInput.addEventListener('blur', () => {
-    if (textInput.value.length == textInput.getAttribute('data-length')) {
-        textInput.classList.add('valid');
+const inputEl = document.querySelector('#validation-input');
+
+inputEl.addEventListener('blur', onInputValidate);
+
+function onInputValidate() {
+    if (inputEl.value.length === Number(inputEl.dataset.length)) {
+        inputEl.classList.remove('invalid');
+        inputEl.classList.add('valid');
     } else {
-        textInput.classList.remove('valid');
-        textInput.classList.add('invalid');
+        inputEl.classList.remove('valid');
+        inputEl.classList.add('invalid');
     }
-});
-console.log(textInput);
+}
+console.log(inputEl);
